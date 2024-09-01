@@ -33,17 +33,14 @@ namespace Company.Repository.Repositories
             _context.SaveChanges();
         }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
+        
 
         public IEnumerable<T> GetAll()
         =>_context.Set<T>().ToList();
           
         
 
-        public T GetById(int id)
+        public T GetById(int? id)
         {
           return _context.Set<T>().Find(id);
         }
