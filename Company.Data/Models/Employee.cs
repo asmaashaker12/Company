@@ -12,9 +12,9 @@ namespace Company.Data.Models
         public string Address { get; set; }
         public int Age { get; set; }
         public decimal Salary { get; set; }
-        public string PhonNumber { get; set; }
-        public DateTime HiringDate { get; set; }
-        public string ImageUrl { get; set; }
+        public string? PhonNumber { get; set; }
+        public DateTime? HiringDate { get; set; }
+        public string? ImageUrl { get; set; }
         public Department  Department { get; set; }
         public int?  DepartmentId { get; set; }
     }
