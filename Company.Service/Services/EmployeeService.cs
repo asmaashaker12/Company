@@ -36,7 +36,10 @@ namespace Company.Service.Services.Employee
             return _unitOfWork.EmployeeRepository.GetAll();
 
         }
+      public  IEnumerable<Data.Models.Employee> GetEmployeeByName(string searchtxt)
+        =>_unitOfWork.EmployeeRepository.GetEmployeeByName(searchtxt);
 
+        
         public Data.Models.Employee GetById(int? id)
         {
             return _unitOfWork.EmployeeRepository.GetById(id);

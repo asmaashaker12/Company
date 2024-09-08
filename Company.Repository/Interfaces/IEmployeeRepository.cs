@@ -9,6 +9,7 @@ namespace Company.Repository.Interfaces
 {
     public interface IEmployeeRepository:IBaseRepository<Employee>
     {
+      public IEnumerable<Employee> GetEmployeeByName(string searchtxt);
 
     }
 }

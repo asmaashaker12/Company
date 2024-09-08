@@ -17,6 +17,9 @@ namespace Company.Repository.Repositories
         {
            _context = context;
         }
+
+        public IEnumerable<Employee> GetEmployeeByName(string searchtxt)
+            => _context.Employees.Where(x => x.Name.Trim().ToLower().Contains(searchtxt.Trim().ToLower()));
         
     }
 }
