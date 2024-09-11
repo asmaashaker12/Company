@@ -1,4 +1,6 @@
 ﻿using Company.Data.Models;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -9,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace Company.Data.Context
 {
-    public class CompanyDbContext:DbContext
+    public class CompanyDbContext:IdentityDbContext<ApplicationUser>
     {
        
         public CompanyDbContext(DbContextOptions<CompanyDbContext> options) : base(options)
@@ -25,7 +27,10 @@ namespace Company.Data.Context
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-           // modelBuilder.Entity<BaseEntity>().HasQueryFilter(x => !x.IsDeleted??false);
+            modelBuilder.Entity<IdentityUserLogin<string>>().HasKey(l => l.UserId);
+            modelBuilder.Entity<IdentityUserRole<string>>().HasKey(l => l.UserId);
+            modelBuilder.Entity<IdentityUserToken<string>>().HasKey(l => l.UserId);
+            // modelBuilder.Entity<BaseEntity>().HasQueryFilter(x => !x.IsDeleted??false);
         }
 
         public DbSet<Employee> Employees { get; set; }
